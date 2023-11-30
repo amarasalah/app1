@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "41822493501",
+    "project_id": "salahloginv2",
+    "storage_bucket": "salahloginv2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41822493501:android:fc9cabdaf0b97bf9548354",
+        "android_client_info": {
+          "package_name": "com.loginappv2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41822493501-b0i631g5pnq03l6kk3ht7p901kgve9ci.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.loginappv2",
+            "certificate_hash": "8d89b321a380cee5f37823948c37da92a0e01b21"
+          }
+        },
+        {
+          "client_id": "41822493501-9rbqdqibmv485l1bdefveu41nnudit4i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABvDfa4WaFvYNhTw4IyE9vk5xOpoDBq2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41822493501-9rbqdqibmv485l1bdefveu41nnudit4i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
