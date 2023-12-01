@@ -6,66 +6,24 @@ import {
   ImageBackground,
   Image,
   Platform,
-  Alert,
   Pressable,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import MyButton from '../components/MyButton';
 import MyTextInput from '../components/MyTextInput';
 import SocialMedia from '../components/SocialMedia';
-import auth from '@react-native-firebase/auth';
-import {
-  GoogleSignin,
-  statusCodes,
-} from '@react-native-google-signin/google-signin';
+import onGoogleButtonPress from '../config/firebase/GoogleSignIn';
+import signInWithEmailAndPassword from '../config/firebase/EmailAndPassword';
 
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  useEffect(() => {
-    // Initialize Google Sign-In
-    GoogleSignin.configure({
-      webClientId: 'YOUR_WEB_CLIENT_ID',
-    });
-  }, []);
-
-  const signInWithGoogle = async () => {
-    try {
-      await GoogleSignin.hasPlayServices();
-      const userInfo = await GoogleSignin.signIn();
-      const googleCredential = auth.GoogleAuthProvider.credential(
-        userInfo.idToken,
-      );
-      await auth().signInWithCredential(googleCredential);
-    } catch (error) {
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        console.log('Google sign-in cancelled');
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        console.log('Google sign-in in progress');
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        console.log('Google play services not available');
-      } else {
-        console.error('Google sign-in error:', error);
-      }
-    }
+  const handlePress = () => {
+    onGoogleButtonPress();
   };
-
-  const signInWithEmailAndPassword = () => {
-    auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        Alert.alert('User account signed in!');
-      })
-      .catch(error => {
-        if (error.code === 'auth/email-already-in-use') {
-          Alert.alert('That email address is already in use!');
-        } else if (error.code === 'auth/invalid-email') {
-          Alert.alert('That email address is invalid!');
-        } else {
-          console.error(error);
-        }
-      });
+  const handleEmailAndPassword = () => {
+    signInWithEmailAndPassword(email, password);
   };
 
   return (
@@ -96,9 +54,9 @@ const Login = ({navigation}) => {
             <Text>Sign Up</Text>
           </Pressable>
 
-          <MyButton title={'Login'} onPress={signInWithEmailAndPassword} />
+          <MyButton title={'Login'} onPress={handleEmailAndPassword} />
           <Text style={styles.textSocial}>OR</Text>
-          <SocialMedia onGoogleButtonPress={signInWithGoogle} />
+          <SocialMedia onPress={handlePress} />
         </View>
       </ImageBackground>
     </View>

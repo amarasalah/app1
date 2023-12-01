@@ -6,23 +6,19 @@ import {
   Image,
   Pressable,
   TouchableOpacity,
-} from "react-native";
-import React from "react";
+} from 'react-native';
+import React from 'react';
 
-const SocialMedia = ({ onGoogleButtonPress }) => {
+const SocialMedia = ({onPress}) => {
   return (
-    <View style={styles.container}>
-      <Pressable
-        onPress={() =>
-          onGoogleButtonPress()
-        }
-      >
+    <Pressable onPress={onPress}>
+      <View style={styles.container}>
         <Image
           style={styles.image}
-          source={require("../assets/SocialMediaIcons/google.png")}
+          source={require('../assets/SocialMediaIcons/google.png')}
         />
-      </Pressable>
-    </View>
+      </View>
+    </Pressable>
   );
 };
 
@@ -30,9 +26,9 @@ export default SocialMedia;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    width: "100%",
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    width: '100%',
   },
 
   image: {
@@ -41,8 +37,8 @@ const styles = StyleSheet.create({
   },
   textSocial: {
     fontSize: 20,
-    color: "gray",
+    color: 'gray',
     marginTop: 20,
-    fontFamily: "Audiowide-Regular",
+    fontFamily: 'Audiowide-Regular',
   },
 });
